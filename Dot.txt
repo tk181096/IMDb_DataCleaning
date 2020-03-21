@@ -1,0 +1,139 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=LR
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=DataCleanup
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+"Cleantitle-principalusingPython" [shape=record rankdir=LR label="{{<f0> Cleantitle-principalusingPython |<f1> Use Python to clean title-principal.tsv}}"];
+"Cleantitle-ratingusingPython" [shape=record rankdir=LR label="{{<f0> Cleantitle-ratingusingPython |<f1> Use Python to clean title-rating.tsv}}"];
+"Cleantitle-episodeusingPython" [shape=record rankdir=LR label="{{<f0> Cleantitle-episodeusingPython |<f1> Use Python to clean title-episode.tsv}}"];
+CleanCrewusingPython [shape=record rankdir=LR label="{{<f0> CleanCrewusingPython |<f1> Use Python to clean Crew.tsv}}"];
+"Cleantitle-basicusingPython" [shape=record rankdir=LR label="{{<f0> Cleantitle-basicusingPython |<f1> Use Python to clean title-basic.tsv}}"];
+"Cleantitle-akasusingPython" [shape=record rankdir=LR label="{{<f0> Cleantitle-akasusingPython |<f1> Use Python to clean title-akas.tsv}}"];
+"DatabaseOperationsOntitle-principal" [shape=record rankdir=LR label="{{<f0> DatabaseOperationsOntitle-principal |<f1> Use Python to load Cleantitle-principal.tsv\n into table TITLE_PRINCIPAL}}"];
+"DatabaseOperationsOntitle-rating" [shape=record rankdir=LR label="{{<f0> DatabaseOperationsOntitle-rating |<f1> Use Python to load Cleantitle-rating.tsv\n into table TITLE_RATING}}"];
+"DatabaseOperationsOntitle-episode" [shape=record rankdir=LR label="{{<f0> DatabaseOperationsOntitle-episode |<f1> Use Python to load Cleantitle-episode.tsv\n into table TITLE_EPISODE}}"];
+DatabaseOperationsOnCrew [shape=record rankdir=LR label="{{<f0> DatabaseOperationsOnCrew |<f1> Use Python to load CleanCrew.tsv\n into table CREW}}"];
+"DatabaseOperationsOntitle-basic" [shape=record rankdir=LR label="{{<f0> DatabaseOperationsOntitle-basic |<f1> Use Python to load Cleantitle-basic.tsv\n into table TITLE_BASIC}}"];
+"DatabaseOperationsOntitle-akas" [shape=record rankdir=LR label="{{<f0> DatabaseOperationsOntitle-akas |<f1> Use Python to load Cleantitle-akas.tsv\n into table TITLE_AKAS}}"];
+IntegrityConstraintsCheck [shape=record rankdir=LR label="{{<f0> IntegrityConstraintsCheck |<f1> Use Python to check integrity\n constraints and functional dependencies}}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+"title-principal.tsv" [shape=record rankdir=LR label="{{<f0> title-principal.tsv |<f1> file\://data/IMDB.cv}}"];
+"title-rating.tsv" [shape=record rankdir=LR label="{{<f0> title-rating.tsv |<f1> file\://data/IMDB.cv}}"];
+"title-episode.tsv" [shape=record rankdir=LR label="{{<f0> title-episode.tsv |<f1> file\://data/IMDB.cv}}"];
+"Crew.tsv" [shape=record rankdir=LR label="{{<f0> Crew.tsv |<f1> file\://data/IMDB.cv}}"];
+"title-basic.tsv" [shape=record rankdir=LR label="{{<f0> title-basic.tsv |<f1> file\://data/IMDB.cv}}"];
+"title-akas.tsv" [shape=record rankdir=LR label="{{<f0> title-akas.tsv |<f1> file\://data/IMDB.cv}}"];
+"Cleantitle-principal.tsv" [shape=record rankdir=LR label="{{<f0> Cleantitle-principal.tsv |<f1> file\://data/clean/Cleantitle-principal.tsv}}"];
+"Cleantitle-rating.tsv" [shape=record rankdir=LR label="{{<f0> Cleantitle-rating.tsv |<f1> file\://data/clean/Cleantitle-rating.tsv}}"];
+"Cleantitle-episode.tsv" [shape=record rankdir=LR label="{{<f0> Cleantitle-episode.tsv |<f1> file\://data/clean/Cleantitle-episode.tsv}}"];
+"CleanCrew.tsv" [shape=record rankdir=LR label="{{<f0> CleanCrew.tsv |<f1> file\://data/clean/CleanCrew.tsv}}"];
+"Cleantitle-basic.tsv" [shape=record rankdir=LR label="{{<f0> Cleantitle-basic.tsv |<f1> file\://data/clean/Cleantitle-basic.tsv}}"];
+"Cleantitle-akas.tsv" [shape=record rankdir=LR label="{{<f0> Cleantitle-akas.tsv |<f1> file\://data/clean/Cleantitle-akas.tsv}}"];
+TITLE_AKAS [shape=record rankdir=LR label="{{<f0> TITLE_AKAS |<f1> http\://localhost\:8889/notebooks/Cleaning%\n20Project%20Code.ipynb}}"];
+CREW [shape=record rankdir=LR label="{{<f0> CREW |<f1> http\://localhost\:8889/notebooks/Cleaning%\n20Project%20Code.ipynb}}"];
+TITLE_BASIC [shape=record rankdir=LR label="{{<f0> TITLE_BASIC |<f1> http\://localhost\:8889/notebooks/Cleaning%\n20Project%20Code.ipynb}}"];
+TITLE_EPISODE [shape=record rankdir=LR label="{{<f0> TITLE_EPISODE |<f1> http\://localhost\:8889/notebooks/Cleaning%\n20Project%20Code.ipynb}}"];
+TITLE_RATING [shape=record rankdir=LR label="{{<f0> TITLE_RATING |<f1> http\://localhost\:8889/notebooks/Cleaning%\n20Project%20Code.ipynb}}"];
+TITLE_PRINCIPAL [shape=record rankdir=LR label="{{<f0> TITLE_PRINCIPAL |<f1> http\://localhost\:8889/notebooks/Cleaning%\n20nProject%20Code.ipynb}}"];
+IMDB_FINAL [shape=record rankdir=LR label="{{<f0> IMDB_FINAL |<f1> http\://localhost\:8889/notebooks/Cleaning%\n20Project%20Code.ipynb}}"];
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+
+/* Edges representing connections between programs and channels */
+"Cleantitle-principalusingPython" -> "Cleantitle-principal.tsv"
+"title-principal.tsv" -> "Cleantitle-principalusingPython"
+"title-principalCleaning\nOperationsSequence" -> "Cleantitle-principalusingPython"
+"Cleantitle-ratingusingPython" -> "Cleantitle-rating.tsv"
+"title-rating.tsv" -> "Cleantitle-ratingusingPython"
+"title-ratingCleaning\nOperationsSequence" -> "Cleantitle-ratingusingPython"
+"Cleantitle-episodeusingPython" -> "Cleantitle-episode.tsv"
+"title-episode.tsv" -> "Cleantitle-episodeusingPython"
+"title-episodeCleaning\nOperationsSequence" -> "Cleantitle-episodeusingPython"
+CleanCrewusingPython -> "CleanCrew.tsv"
+"Crew.tsv" -> CleanCrewusingPython
+"CrewCleaning\nOperationsSequence" -> CleanCrewusingPython
+"Cleantitle-basicusingPython" -> "Cleantitle-basic.tsv"
+"title-basic.tsv" -> "Cleantitle-basicusingPython"
+"title-basicCleaning\nOperationsSequence" -> "Cleantitle-basicusingPython"
+"Cleantitle-akasusingPython" -> "Cleantitle-akas.tsv"
+"title-akas.tsv" -> "Cleantitle-akasusingPython"
+"title-akasCleaning\nOperationsSequence" -> "Cleantitle-akasusingPython"
+"DatabaseOperationsOntitle-principal" -> TITLE_PRINCIPAL
+"Cleantitle-principal.tsv" -> "DatabaseOperationsOntitle-principal"
+"title-principalLoadingPythonScript" -> "DatabaseOperationsOntitle-principal"
+"DatabaseOperationsOntitle-rating" -> TITLE_RATING
+"Cleantitle-rating.tsv" -> "DatabaseOperationsOntitle-rating"
+"title-ratingLoadingPythonScript" -> "DatabaseOperationsOntitle-rating"
+"DatabaseOperationsOntitle-episode" -> TITLE_EPISODE
+"Cleantitle-episode.tsv" -> "DatabaseOperationsOntitle-episode"
+"title-episodeLoadingPythonScript" -> "DatabaseOperationsOntitle-episode"
+DatabaseOperationsOnCrew -> CREW
+"CleanCrew.tsv" -> DatabaseOperationsOnCrew
+CrewLoadingPythonScript -> DatabaseOperationsOnCrew
+"DatabaseOperationsOntitle-basic" -> TITLE_BASIC
+"Cleantitle-basic.tsv" -> "DatabaseOperationsOntitle-basic"
+"title-basicLoadingPythonScript" -> "DatabaseOperationsOntitle-basic"
+"DatabaseOperationsOntitle-akas" -> TITLE_AKAS
+"Cleantitle-akas.tsv" -> "DatabaseOperationsOntitle-akas"
+"title-akasLoadingPythonScript" -> "DatabaseOperationsOntitle-akas"
+IntegrityConstraintsCheck -> IMDB_FINAL
+TITLE_AKAS -> IntegrityConstraintsCheck
+CREW -> IntegrityConstraintsCheck
+TITLE_BASIC -> IntegrityConstraintsCheck
+TITLE_EPISODE -> IntegrityConstraintsCheck
+TITLE_RATING -> IntegrityConstraintsCheck
+TITLE_PRINCIPAL -> IntegrityConstraintsCheck
+IntegrityConstraintsANDFunctionalDependenciesScript -> IntegrityConstraintsCheck
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+"title-principal.tsv_input_port" [label=""]
+"title-rating.tsv_input_port" [label=""]
+"title-episode.tsv_input_port" [label=""]
+"Crew.tsv_input_port" [label=""]
+"title-basic.tsv_input_port" [label=""]
+"title-akas.tsv_input_port" [label=""]
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+IMDB_FINAL_output_port [label=""]
+
+/* Edges from input ports to channels */
+"title-principal.tsv_input_port" -> "title-principal.tsv"
+"title-rating.tsv_input_port" -> "title-rating.tsv"
+"title-episode.tsv_input_port" -> "title-episode.tsv"
+"Crew.tsv_input_port" -> "Crew.tsv"
+"title-basic.tsv_input_port" -> "title-basic.tsv"
+"title-akas.tsv_input_port" -> "title-akas.tsv"
+
+/* Edges from channels to output ports */
+IMDB_FINAL -> IMDB_FINAL_output_port
+
+/* End of top-level graph */
+}

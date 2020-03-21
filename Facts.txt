@@ -1,0 +1,509 @@
+
+% FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
+program(1, 'DataCleanup', 'DataCleanup', 1, 131).
+program(2, 'Cleantitle-principalusingPython', 'DataCleanup.Cleantitle-principalusingPython', 15, 22).
+program(3, 'Cleantitle-ratingusingPython', 'DataCleanup.Cleantitle-ratingusingPython', 23, 30).
+program(4, 'Cleantitle-episodeusingPython', 'DataCleanup.Cleantitle-episodeusingPython', 31, 38).
+program(5, 'CleanCrewusingPython', 'DataCleanup.CleanCrewusingPython', 39, 46).
+program(6, 'Cleantitle-basicusingPython', 'DataCleanup.Cleantitle-basicusingPython', 47, 54).
+program(7, 'Cleantitle-akasusingPython', 'DataCleanup.Cleantitle-akasusingPython', 55, 62).
+program(8, 'DatabaseOperationsOntitle-principal', 'DataCleanup.DatabaseOperationsOntitle-principal', 63, 70).
+program(9, 'DatabaseOperationsOntitle-rating', 'DataCleanup.DatabaseOperationsOntitle-rating', 71, 78).
+program(10, 'DatabaseOperationsOntitle-episode', 'DataCleanup.DatabaseOperationsOntitle-episode', 79, 86).
+program(11, 'DatabaseOperationsOnCrew', 'DataCleanup.DatabaseOperationsOnCrew', 87, 94).
+program(12, 'DatabaseOperationsOntitle-basic', 'DataCleanup.DatabaseOperationsOntitle-basic', 95, 102).
+program(13, 'DatabaseOperationsOntitle-akas', 'DataCleanup.DatabaseOperationsOntitle-akas', 103, 110).
+program(14, 'IntegrityConstraintsCheck', 'DataCleanup.IntegrityConstraintsCheck', 111, 128).
+
+% FACT: workflow(program_id).
+workflow(1).
+
+% FACT: function(program_id).
+
+% FACT: has_subprogram(program_id, subprogram_id).
+has_subprogram(1, 2).
+has_subprogram(1, 3).
+has_subprogram(1, 4).
+has_subprogram(1, 5).
+has_subprogram(1, 6).
+has_subprogram(1, 7).
+has_subprogram(1, 8).
+has_subprogram(1, 9).
+has_subprogram(1, 10).
+has_subprogram(1, 11).
+has_subprogram(1, 12).
+has_subprogram(1, 13).
+has_subprogram(1, 14).
+
+% FACT: port(port_id, port_type, port_name, qualified_port_name, port_annotation_id, data_id).
+port(1, 'in', 'title-principal.tsv', 'DataCleanup<-title-principal.tsv', 3, 1).
+port(2, 'in', 'title-rating.tsv', 'DataCleanup<-title-rating.tsv', 5, 2).
+port(3, 'in', 'title-episode.tsv', 'DataCleanup<-title-episode.tsv', 7, 3).
+port(4, 'in', 'Crew.tsv', 'DataCleanup<-Crew.tsv', 9, 4).
+port(5, 'in', 'title-basic.tsv', 'DataCleanup<-title-basic.tsv', 11, 5).
+port(6, 'in', 'title-akas.tsv', 'DataCleanup<-title-akas.tsv', 13, 6).
+port(51, 'out', 'IMDB_FINAL', 'DataCleanup->IMDB_FINAL', 129, 39).
+port(7, 'in', 'title-principal.tsv', 'DataCleanup.Cleantitle-principalusingPython<-title-principal.tsv', 17, 7).
+port(8, 'param', 'title-principalCleaning\nOperationsSequence', 'DataCleanup.Cleantitle-principalusingPython<-title-principalCleaning\nOperationsSequence', 19, 8).
+port(9, 'out', 'Cleantitle-principal.tsv', 'DataCleanup.Cleantitle-principalusingPython->Cleantitle-principal.tsv', 20, 9).
+port(10, 'in', 'title-rating.tsv', 'DataCleanup.Cleantitle-ratingusingPython<-title-rating.tsv', 25, 10).
+port(11, 'param', 'title-ratingCleaning\nOperationsSequence', 'DataCleanup.Cleantitle-ratingusingPython<-title-ratingCleaning\nOperationsSequence', 27, 11).
+port(12, 'out', 'Cleantitle-rating.tsv', 'DataCleanup.Cleantitle-ratingusingPython->Cleantitle-rating.tsv', 28, 12).
+port(13, 'in', 'title-episode.tsv', 'DataCleanup.Cleantitle-episodeusingPython<-title-episode.tsv', 33, 13).
+port(14, 'param', 'title-episodeCleaning\nOperationsSequence', 'DataCleanup.Cleantitle-episodeusingPython<-title-episodeCleaning\nOperationsSequence', 35, 14).
+port(15, 'out', 'Cleantitle-episode.tsv', 'DataCleanup.Cleantitle-episodeusingPython->Cleantitle-episode.tsv', 36, 15).
+port(16, 'in', 'Crew.tsv', 'DataCleanup.CleanCrewusingPython<-Crew.tsv', 41, 16).
+port(17, 'param', 'CrewCleaning\nOperationsSequence', 'DataCleanup.CleanCrewusingPython<-CrewCleaning\nOperationsSequence', 43, 17).
+port(18, 'out', 'CleanCrew.tsv', 'DataCleanup.CleanCrewusingPython->CleanCrew.tsv', 44, 18).
+port(19, 'in', 'title-basic.tsv', 'DataCleanup.Cleantitle-basicusingPython<-title-basic.tsv', 49, 19).
+port(20, 'param', 'title-basicCleaning\nOperationsSequence', 'DataCleanup.Cleantitle-basicusingPython<-title-basicCleaning\nOperationsSequence', 51, 20).
+port(21, 'out', 'Cleantitle-basic.tsv', 'DataCleanup.Cleantitle-basicusingPython->Cleantitle-basic.tsv', 52, 21).
+port(22, 'in', 'title-akas.tsv', 'DataCleanup.Cleantitle-akasusingPython<-title-akas.tsv', 57, 22).
+port(23, 'param', 'title-akasCleaning\nOperationsSequence', 'DataCleanup.Cleantitle-akasusingPython<-title-akasCleaning\nOperationsSequence', 59, 23).
+port(24, 'out', 'Cleantitle-akas.tsv', 'DataCleanup.Cleantitle-akasusingPython->Cleantitle-akas.tsv', 60, 24).
+port(25, 'in', 'Cleantitle-principal.tsv', 'DataCleanup.DatabaseOperationsOntitle-principal<-Cleantitle-principal.tsv', 65, 9).
+port(26, 'param', 'title-principalLoadingPythonScript', 'DataCleanup.DatabaseOperationsOntitle-principal<-title-principalLoadingPythonScript', 67, 25).
+port(27, 'out', 'TITLE_PRINCIPAL', 'DataCleanup.DatabaseOperationsOntitle-principal->TITLE_PRINCIPAL', 68, 26).
+port(28, 'in', 'Cleantitle-rating.tsv', 'DataCleanup.DatabaseOperationsOntitle-rating<-Cleantitle-rating.tsv', 73, 12).
+port(29, 'param', 'title-ratingLoadingPythonScript', 'DataCleanup.DatabaseOperationsOntitle-rating<-title-ratingLoadingPythonScript', 75, 27).
+port(30, 'out', 'TITLE_RATING', 'DataCleanup.DatabaseOperationsOntitle-rating->TITLE_RATING', 76, 28).
+port(31, 'in', 'Cleantitle-episode.tsv', 'DataCleanup.DatabaseOperationsOntitle-episode<-Cleantitle-episode.tsv', 81, 15).
+port(32, 'param', 'title-episodeLoadingPythonScript', 'DataCleanup.DatabaseOperationsOntitle-episode<-title-episodeLoadingPythonScript', 83, 29).
+port(33, 'out', 'TITLE_EPISODE', 'DataCleanup.DatabaseOperationsOntitle-episode->TITLE_EPISODE', 84, 30).
+port(34, 'in', 'CleanCrew.tsv', 'DataCleanup.DatabaseOperationsOnCrew<-CleanCrew.tsv', 89, 18).
+port(35, 'param', 'CrewLoadingPythonScript', 'DataCleanup.DatabaseOperationsOnCrew<-CrewLoadingPythonScript', 91, 31).
+port(36, 'out', 'CREW', 'DataCleanup.DatabaseOperationsOnCrew->CREW', 92, 32).
+port(37, 'in', 'Cleantitle-basic.tsv', 'DataCleanup.DatabaseOperationsOntitle-basic<-Cleantitle-basic.tsv', 97, 21).
+port(38, 'param', 'title-basicLoadingPythonScript', 'DataCleanup.DatabaseOperationsOntitle-basic<-title-basicLoadingPythonScript', 99, 33).
+port(39, 'out', 'TITLE_BASIC', 'DataCleanup.DatabaseOperationsOntitle-basic->TITLE_BASIC', 100, 34).
+port(40, 'in', 'Cleantitle-akas.tsv', 'DataCleanup.DatabaseOperationsOntitle-akas<-Cleantitle-akas.tsv', 105, 24).
+port(41, 'param', 'title-akasLoadingPythonScript', 'DataCleanup.DatabaseOperationsOntitle-akas<-title-akasLoadingPythonScript', 107, 35).
+port(42, 'out', 'TITLE_AKAS', 'DataCleanup.DatabaseOperationsOntitle-akas->TITLE_AKAS', 108, 36).
+port(43, 'in', 'TITLE_AKAS', 'DataCleanup.IntegrityConstraintsCheck<-TITLE_AKAS', 113, 36).
+port(44, 'in', 'CREW', 'DataCleanup.IntegrityConstraintsCheck<-CREW', 115, 32).
+port(45, 'in', 'TITLE_BASIC', 'DataCleanup.IntegrityConstraintsCheck<-TITLE_BASIC', 117, 34).
+port(46, 'in', 'TITLE_EPISODE', 'DataCleanup.IntegrityConstraintsCheck<-TITLE_EPISODE', 119, 30).
+port(47, 'in', 'TITLE_RATING', 'DataCleanup.IntegrityConstraintsCheck<-TITLE_RATING', 121, 28).
+port(48, 'in', 'TITLE_PRINCIPAL', 'DataCleanup.IntegrityConstraintsCheck<-TITLE_PRINCIPAL', 123, 26).
+port(49, 'param', 'IntegrityConstraintsANDFunctionalDependenciesScript', 'DataCleanup.IntegrityConstraintsCheck<-IntegrityConstraintsANDFunctionalDependenciesScript', 125, 37).
+port(50, 'out', 'IMDB_FINAL', 'DataCleanup.IntegrityConstraintsCheck->IMDB_FINAL', 126, 38).
+
+% FACT: port_alias(port_id, alias).
+
+% FACT: port_uri_template(port_id, uri).
+port_uri_template(1, 'file://data/IMDB.cv').
+port_uri_template(2, 'file://data/IMDB.cv').
+port_uri_template(3, 'file://data/IMDB.cv').
+port_uri_template(4, 'file://data/IMDB.cv').
+port_uri_template(5, 'file://data/IMDB.cv').
+port_uri_template(6, 'file://data/IMDB.cv').
+port_uri_template(51, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(7, 'file://data/IMDB.cv').
+port_uri_template(9, 'file://data/clean/Cleantitle-principal.tsv').
+port_uri_template(10, 'file://data/IMDB.cv').
+port_uri_template(12, 'file://data/clean/Cleantitle-rating.tsv').
+port_uri_template(13, 'file://data/IMDB.cv').
+port_uri_template(15, 'file://data/clean/Cleantitle-episode.tsv').
+port_uri_template(16, 'file://data/IMDB.cv').
+port_uri_template(18, 'file://data/clean/CleanCrew.tsv').
+port_uri_template(19, 'file://data/IMDB.cv').
+port_uri_template(21, 'file://data/clean/Cleantitle-basic.tsv').
+port_uri_template(22, 'file://data/IMDB.cv').
+port_uri_template(24, 'file://data/clean/Cleantitle-akas.tsv').
+port_uri_template(25, 'file://data/clean/Cleantitle-principal.tsv').
+port_uri_template(27, 'http://localhost:8889/notebooks/Cleaning%\n20nProject%20Code.ipynb').
+port_uri_template(28, 'file://data/clean/Cleantitle-rating.tsv').
+port_uri_template(30, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(31, 'file://data/clean/Cleantitle-episode.tsv').
+port_uri_template(33, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(34, 'file://data/clean/CleanCrew.tsv').
+port_uri_template(36, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(37, 'file://data/clean/Cleantitle-basic.tsv').
+port_uri_template(39, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(40, 'file://data/clean/Cleantitle-akas.tsv').
+port_uri_template(42, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(43, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(44, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(45, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(46, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(47, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+port_uri_template(48, 'http://localhost:8889/notebooks/Cleaning%\n20//nProject%20Code.ipynb').
+port_uri_template(50, 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+
+% FACT: has_in_port(block_id, port_id).
+has_in_port(1, 1).
+has_in_port(1, 2).
+has_in_port(1, 3).
+has_in_port(1, 4).
+has_in_port(1, 5).
+has_in_port(1, 6).
+has_in_port(2, 7).
+has_in_port(2, 8).
+has_in_port(3, 10).
+has_in_port(3, 11).
+has_in_port(4, 13).
+has_in_port(4, 14).
+has_in_port(5, 16).
+has_in_port(5, 17).
+has_in_port(6, 19).
+has_in_port(6, 20).
+has_in_port(7, 22).
+has_in_port(7, 23).
+has_in_port(8, 25).
+has_in_port(8, 26).
+has_in_port(9, 28).
+has_in_port(9, 29).
+has_in_port(10, 31).
+has_in_port(10, 32).
+has_in_port(11, 34).
+has_in_port(11, 35).
+has_in_port(12, 37).
+has_in_port(12, 38).
+has_in_port(13, 40).
+has_in_port(13, 41).
+has_in_port(14, 43).
+has_in_port(14, 44).
+has_in_port(14, 45).
+has_in_port(14, 46).
+has_in_port(14, 47).
+has_in_port(14, 48).
+has_in_port(14, 49).
+
+% FACT: has_out_port(block_id, port_id).
+has_out_port(1, 51).
+has_out_port(2, 9).
+has_out_port(3, 12).
+has_out_port(4, 15).
+has_out_port(5, 18).
+has_out_port(6, 21).
+has_out_port(7, 24).
+has_out_port(8, 27).
+has_out_port(9, 30).
+has_out_port(10, 33).
+has_out_port(11, 36).
+has_out_port(12, 39).
+has_out_port(13, 42).
+has_out_port(14, 50).
+
+% FACT: data(data_id, data_name, qualified_data_name).
+data(1, 'title-principal.tsv', '[title-principal.tsv]').
+data(2, 'title-rating.tsv', '[title-rating.tsv]').
+data(3, 'title-episode.tsv', '[title-episode.tsv]').
+data(4, 'Crew.tsv', '[Crew.tsv]').
+data(5, 'title-basic.tsv', '[title-basic.tsv]').
+data(6, 'title-akas.tsv', '[title-akas.tsv]').
+data(39, 'IMDB_FINAL', '[IMDB_FINAL]').
+data(7, 'title-principal.tsv', 'DataCleanup[title-principal.tsv]').
+data(8, 'title-principalCleaning\nOperationsSequence', 'DataCleanup[title-principalCleaning\nOperationsSequence]').
+data(9, 'Cleantitle-principal.tsv', 'DataCleanup[Cleantitle-principal.tsv]').
+data(10, 'title-rating.tsv', 'DataCleanup[title-rating.tsv]').
+data(11, 'title-ratingCleaning\nOperationsSequence', 'DataCleanup[title-ratingCleaning\nOperationsSequence]').
+data(12, 'Cleantitle-rating.tsv', 'DataCleanup[Cleantitle-rating.tsv]').
+data(13, 'title-episode.tsv', 'DataCleanup[title-episode.tsv]').
+data(14, 'title-episodeCleaning\nOperationsSequence', 'DataCleanup[title-episodeCleaning\nOperationsSequence]').
+data(15, 'Cleantitle-episode.tsv', 'DataCleanup[Cleantitle-episode.tsv]').
+data(16, 'Crew.tsv', 'DataCleanup[Crew.tsv]').
+data(17, 'CrewCleaning\nOperationsSequence', 'DataCleanup[CrewCleaning\nOperationsSequence]').
+data(18, 'CleanCrew.tsv', 'DataCleanup[CleanCrew.tsv]').
+data(19, 'title-basic.tsv', 'DataCleanup[title-basic.tsv]').
+data(20, 'title-basicCleaning\nOperationsSequence', 'DataCleanup[title-basicCleaning\nOperationsSequence]').
+data(21, 'Cleantitle-basic.tsv', 'DataCleanup[Cleantitle-basic.tsv]').
+data(22, 'title-akas.tsv', 'DataCleanup[title-akas.tsv]').
+data(23, 'title-akasCleaning\nOperationsSequence', 'DataCleanup[title-akasCleaning\nOperationsSequence]').
+data(24, 'Cleantitle-akas.tsv', 'DataCleanup[Cleantitle-akas.tsv]').
+data(25, 'title-principalLoadingPythonScript', 'DataCleanup[title-principalLoadingPythonScript]').
+data(26, 'TITLE_PRINCIPAL', 'DataCleanup[TITLE_PRINCIPAL]').
+data(27, 'title-ratingLoadingPythonScript', 'DataCleanup[title-ratingLoadingPythonScript]').
+data(28, 'TITLE_RATING', 'DataCleanup[TITLE_RATING]').
+data(29, 'title-episodeLoadingPythonScript', 'DataCleanup[title-episodeLoadingPythonScript]').
+data(30, 'TITLE_EPISODE', 'DataCleanup[TITLE_EPISODE]').
+data(31, 'CrewLoadingPythonScript', 'DataCleanup[CrewLoadingPythonScript]').
+data(32, 'CREW', 'DataCleanup[CREW]').
+data(33, 'title-basicLoadingPythonScript', 'DataCleanup[title-basicLoadingPythonScript]').
+data(34, 'TITLE_BASIC', 'DataCleanup[TITLE_BASIC]').
+data(35, 'title-akasLoadingPythonScript', 'DataCleanup[title-akasLoadingPythonScript]').
+data(36, 'TITLE_AKAS', 'DataCleanup[TITLE_AKAS]').
+data(37, 'IntegrityConstraintsANDFunctionalDependenciesScript', 'DataCleanup[IntegrityConstraintsANDFunctionalDependenciesScript]').
+data(38, 'IMDB_FINAL', 'DataCleanup[IMDB_FINAL]').
+
+% FACT: channel(channel_id, data_id).
+channel(1, 7).
+channel(2, 10).
+channel(3, 13).
+channel(4, 16).
+channel(5, 19).
+channel(6, 22).
+channel(7, 9).
+channel(8, 12).
+channel(9, 15).
+channel(10, 18).
+channel(11, 21).
+channel(12, 24).
+channel(13, 36).
+channel(14, 32).
+channel(15, 34).
+channel(16, 30).
+channel(17, 28).
+channel(18, 26).
+channel(19, 39).
+channel(20, 1).
+channel(21, 2).
+channel(22, 3).
+channel(23, 4).
+channel(24, 5).
+channel(25, 6).
+channel(26, 38).
+
+% FACT: port_connects_to_channel(port_id, channel_id).
+port_connects_to_channel(7, 1).
+port_connects_to_channel(10, 2).
+port_connects_to_channel(13, 3).
+port_connects_to_channel(16, 4).
+port_connects_to_channel(19, 5).
+port_connects_to_channel(22, 6).
+port_connects_to_channel(9, 7).
+port_connects_to_channel(25, 7).
+port_connects_to_channel(12, 8).
+port_connects_to_channel(28, 8).
+port_connects_to_channel(15, 9).
+port_connects_to_channel(31, 9).
+port_connects_to_channel(18, 10).
+port_connects_to_channel(34, 10).
+port_connects_to_channel(21, 11).
+port_connects_to_channel(37, 11).
+port_connects_to_channel(24, 12).
+port_connects_to_channel(40, 12).
+port_connects_to_channel(42, 13).
+port_connects_to_channel(43, 13).
+port_connects_to_channel(36, 14).
+port_connects_to_channel(44, 14).
+port_connects_to_channel(39, 15).
+port_connects_to_channel(45, 15).
+port_connects_to_channel(33, 16).
+port_connects_to_channel(46, 16).
+port_connects_to_channel(30, 17).
+port_connects_to_channel(47, 17).
+port_connects_to_channel(27, 18).
+port_connects_to_channel(48, 18).
+port_connects_to_channel(50, 19).
+port_connects_to_channel(7, 20).
+port_connects_to_channel(10, 21).
+port_connects_to_channel(13, 22).
+port_connects_to_channel(16, 23).
+port_connects_to_channel(19, 24).
+port_connects_to_channel(22, 25).
+port_connects_to_channel(50, 26).
+
+% FACT: inflow_connects_to_channel(port_id, channel_id).
+inflow_connects_to_channel(1, 1).
+inflow_connects_to_channel(2, 2).
+inflow_connects_to_channel(3, 3).
+inflow_connects_to_channel(4, 4).
+inflow_connects_to_channel(5, 5).
+inflow_connects_to_channel(6, 6).
+inflow_connects_to_channel(1, 20).
+inflow_connects_to_channel(2, 21).
+inflow_connects_to_channel(3, 22).
+inflow_connects_to_channel(4, 23).
+inflow_connects_to_channel(5, 24).
+inflow_connects_to_channel(6, 25).
+
+% FACT: outflow_connects_to_channel(port_id, channel_id).
+outflow_connects_to_channel(51, 19).
+outflow_connects_to_channel(51, 26).
+
+% FACT: uri_variable(uri_variable_id, variable_name, port_id).
+
+% FACT: log_template(log_template_id, port_id, entry_template, log_annotation_id).
+
+% FACT: log_template_variable(log_variable_id, variable_name, log_template_id).
+
+% FACT: extract_source(source_id, source_path).
+extract_source(1, '').
+
+% FACT: annotation(annotation_id, source_id, line_number, tag, keyword, value).
+annotation(1, 1, 1, 'begin', '@begin', 'DataCleanup').
+annotation(2, 1, 1, 'desc', '@desc', 'Workflow for cleaning NYPL Menus DataSet').
+annotation(3, 1, 2, 'in', '@in', 'title-principal.tsv').
+annotation(4, 1, 2, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(5, 1, 3, 'in', '@in', 'title-rating.tsv').
+annotation(6, 1, 3, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(7, 1, 4, 'in', '@in', 'title-episode.tsv').
+annotation(8, 1, 4, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(9, 1, 5, 'in', '@in', 'Crew.tsv').
+annotation(10, 1, 5, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(11, 1, 6, 'in', '@in', 'title-basic.tsv').
+annotation(12, 1, 6, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(13, 1, 7, 'in', '@in', 'title-akas.tsv').
+annotation(14, 1, 7, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(15, 1, 9, 'begin', '@begin', 'Cleantitle-principalusingPython').
+annotation(16, 1, 9, 'desc', '@desc', 'Use Python to clean title-principal.tsv').
+annotation(17, 1, 10, 'in', '@in', 'title-principal.tsv').
+annotation(18, 1, 10, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(19, 1, 11, 'param', '@param', 'title-principalCleaning\nOperationsSequence').
+annotation(20, 1, 12, 'out', '@out', 'Cleantitle-principal.tsv').
+annotation(21, 1, 12, 'uri', '@uri', 'file://data/clean/Cleantitle-principal.tsv').
+annotation(22, 1, 13, 'end', '@end', 'Cleantitle-principalusingPython').
+annotation(23, 1, 15, 'begin', '@begin', 'Cleantitle-ratingusingPython').
+annotation(24, 1, 15, 'desc', '@desc', 'Use Python to clean title-rating.tsv').
+annotation(25, 1, 16, 'in', '@in', 'title-rating.tsv').
+annotation(26, 1, 16, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(27, 1, 17, 'param', '@param', 'title-ratingCleaning\nOperationsSequence').
+annotation(28, 1, 18, 'out', '@out', 'Cleantitle-rating.tsv').
+annotation(29, 1, 18, 'uri', '@uri', 'file://data/clean/Cleantitle-rating.tsv').
+annotation(30, 1, 19, 'end', '@end', 'Cleantitle-ratingusingPython').
+annotation(31, 1, 21, 'begin', '@begin', 'Cleantitle-episodeusingPython').
+annotation(32, 1, 21, 'desc', '@desc', 'Use Python to clean title-episode.tsv').
+annotation(33, 1, 22, 'in', '@in', 'title-episode.tsv').
+annotation(34, 1, 22, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(35, 1, 23, 'param', '@param', 'title-episodeCleaning\nOperationsSequence').
+annotation(36, 1, 24, 'out', '@out', 'Cleantitle-episode.tsv').
+annotation(37, 1, 24, 'uri', '@uri', 'file://data/clean/Cleantitle-episode.tsv').
+annotation(38, 1, 25, 'end', '@end', 'Cleantitle-episodeusingPython').
+annotation(39, 1, 27, 'begin', '@begin', 'CleanCrewusingPython').
+annotation(40, 1, 27, 'desc', '@desc', 'Use Python to clean Crew.tsv').
+annotation(41, 1, 28, 'in', '@in', 'Crew.tsv').
+annotation(42, 1, 28, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(43, 1, 29, 'param', '@param', 'CrewCleaning\nOperationsSequence').
+annotation(44, 1, 30, 'out', '@out', 'CleanCrew.tsv').
+annotation(45, 1, 30, 'uri', '@uri', 'file://data/clean/CleanCrew.tsv').
+annotation(46, 1, 31, 'end', '@end', 'CleanCrewusingPython').
+annotation(47, 1, 33, 'begin', '@begin', 'Cleantitle-basicusingPython').
+annotation(48, 1, 33, 'desc', '@desc', 'Use Python to clean title-basic.tsv').
+annotation(49, 1, 34, 'in', '@in', 'title-basic.tsv').
+annotation(50, 1, 34, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(51, 1, 35, 'param', '@param', 'title-basicCleaning\nOperationsSequence').
+annotation(52, 1, 36, 'out', '@out', 'Cleantitle-basic.tsv').
+annotation(53, 1, 36, 'uri', '@uri', 'file://data/clean/Cleantitle-basic.tsv').
+annotation(54, 1, 37, 'end', '@end', 'Cleantitle-basicusingPython').
+annotation(55, 1, 39, 'begin', '@begin', 'Cleantitle-akasusingPython').
+annotation(56, 1, 39, 'desc', '@desc', 'Use Python to clean title-akas.tsv').
+annotation(57, 1, 40, 'in', '@in', 'title-akas.tsv').
+annotation(58, 1, 40, 'uri', '@uri', 'file://data/IMDB.cv').
+annotation(59, 1, 41, 'param', '@param', 'title-akasCleaning\nOperationsSequence').
+annotation(60, 1, 42, 'out', '@out', 'Cleantitle-akas.tsv').
+annotation(61, 1, 42, 'uri', '@uri', 'file://data/clean/Cleantitle-akas.tsv').
+annotation(62, 1, 43, 'end', '@end', 'Cleantitle-akasusingPython').
+annotation(63, 1, 45, 'begin', '@begin', 'DatabaseOperationsOntitle-principal').
+annotation(64, 1, 45, 'desc', '@desc', 'Use Python to load Cleantitle-principal.tsv\n into table TITLE_PRINCIPAL').
+annotation(65, 1, 46, 'in', '@in', 'Cleantitle-principal.tsv').
+annotation(66, 1, 46, 'uri', '@uri', 'file://data/clean/Cleantitle-principal.tsv').
+annotation(67, 1, 47, 'param', '@param', 'title-principalLoadingPythonScript').
+annotation(68, 1, 48, 'out', '@out', 'TITLE_PRINCIPAL').
+annotation(69, 1, 48, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20nProject%20Code.ipynb').
+annotation(70, 1, 49, 'end', '@end', 'SQLOperationsOntitle-principal').
+annotation(71, 1, 51, 'begin', '@begin', 'DatabaseOperationsOntitle-rating').
+annotation(72, 1, 51, 'desc', '@desc', 'Use Python to load Cleantitle-rating.tsv\n into table TITLE_RATING').
+annotation(73, 1, 52, 'in', '@in', 'Cleantitle-rating.tsv').
+annotation(74, 1, 52, 'uri', '@uri', 'file://data/clean/Cleantitle-rating.tsv').
+annotation(75, 1, 53, 'param', '@param', 'title-ratingLoadingPythonScript').
+annotation(76, 1, 54, 'out', '@out', 'TITLE_RATING').
+annotation(77, 1, 54, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(78, 1, 55, 'end', '@end', 'SQLOperationsOntitle-rating').
+annotation(79, 1, 57, 'begin', '@begin', 'DatabaseOperationsOntitle-episode').
+annotation(80, 1, 57, 'desc', '@desc', 'Use Python to load Cleantitle-episode.tsv\n into table TITLE_EPISODE').
+annotation(81, 1, 58, 'in', '@in', 'Cleantitle-episode.tsv').
+annotation(82, 1, 58, 'uri', '@uri', 'file://data/clean/Cleantitle-episode.tsv').
+annotation(83, 1, 59, 'param', '@param', 'title-episodeLoadingPythonScript').
+annotation(84, 1, 60, 'out', '@out', 'TITLE_EPISODE').
+annotation(85, 1, 60, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(86, 1, 61, 'end', '@end', 'SQLOperationsOntitle-episode').
+annotation(87, 1, 63, 'begin', '@begin', 'DatabaseOperationsOnCrew').
+annotation(88, 1, 63, 'desc', '@desc', 'Use Python to load CleanCrew.tsv\n into table CREW').
+annotation(89, 1, 64, 'in', '@in', 'CleanCrew.tsv').
+annotation(90, 1, 64, 'uri', '@uri', 'file://data/clean/CleanCrew.tsv').
+annotation(91, 1, 65, 'param', '@param', 'CrewLoadingPythonScript').
+annotation(92, 1, 66, 'out', '@out', 'CREW').
+annotation(93, 1, 66, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(94, 1, 67, 'end', '@end', 'SQLOperationsOnCrew').
+annotation(95, 1, 69, 'begin', '@begin', 'DatabaseOperationsOntitle-basic').
+annotation(96, 1, 69, 'desc', '@desc', 'Use Python to load Cleantitle-basic.tsv\n into table TITLE_BASIC').
+annotation(97, 1, 70, 'in', '@in', 'Cleantitle-basic.tsv').
+annotation(98, 1, 70, 'uri', '@uri', 'file://data/clean/Cleantitle-basic.tsv').
+annotation(99, 1, 71, 'param', '@param', 'title-basicLoadingPythonScript').
+annotation(100, 1, 72, 'out', '@out', 'TITLE_BASIC').
+annotation(101, 1, 72, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(102, 1, 73, 'end', '@end', 'SQLOperationsOntitle-basic').
+annotation(103, 1, 75, 'begin', '@begin', 'DatabaseOperationsOntitle-akas').
+annotation(104, 1, 75, 'desc', '@desc', 'Use Python to load Cleantitle-akas.tsv\n into table TITLE_AKAS').
+annotation(105, 1, 76, 'in', '@in', 'Cleantitle-akas.tsv').
+annotation(106, 1, 76, 'uri', '@uri', 'file://data/clean/Cleantitle-akas.tsv').
+annotation(107, 1, 77, 'param', '@param', 'title-akasLoadingPythonScript').
+annotation(108, 1, 78, 'out', '@out', 'TITLE_AKAS').
+annotation(109, 1, 78, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(110, 1, 79, 'end', '@end', 'SQLOperationsOntitle-akas').
+annotation(111, 1, 81, 'begin', '@begin', 'IntegrityConstraintsCheck').
+annotation(112, 1, 81, 'desc', '@desc', 'Use Python to check integrity\n constraints and functional dependencies').
+annotation(113, 1, 82, 'in', '@in', 'TITLE_AKAS').
+annotation(114, 1, 82, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(115, 1, 83, 'in', '@in', 'CREW').
+annotation(116, 1, 83, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(117, 1, 84, 'in', '@in', 'TITLE_BASIC').
+annotation(118, 1, 84, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(119, 1, 85, 'in', '@in', 'TITLE_EPISODE').
+annotation(120, 1, 85, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(121, 1, 86, 'in', '@in', 'TITLE_RATING').
+annotation(122, 1, 86, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(123, 1, 87, 'in', '@in', 'TITLE_PRINCIPAL').
+annotation(124, 1, 87, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20//nProject%20Code.ipynb').
+annotation(125, 1, 88, 'param', '@param', 'IntegrityConstraintsANDFunctionalDependenciesScript').
+annotation(126, 1, 89, 'out', '@out', 'IMDB_FINAL').
+annotation(127, 1, 89, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(128, 1, 91, 'end', '@end', 'SQLConstraintsCheck').
+annotation(129, 1, 92, 'out', '@out', 'IMDB_FINAL').
+annotation(130, 1, 92, 'uri', '@uri', 'http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb').
+annotation(131, 1, 94, 'end', '@end', 'DataCleanup').
+
+% FACT: annotation_qualifies(qualifying_annotation_id, primary_annotation_id).
+annotation_qualifies(2, 1).
+annotation_qualifies(4, 3).
+annotation_qualifies(6, 5).
+annotation_qualifies(8, 7).
+annotation_qualifies(10, 9).
+annotation_qualifies(12, 11).
+annotation_qualifies(14, 13).
+annotation_qualifies(16, 15).
+annotation_qualifies(18, 17).
+annotation_qualifies(21, 20).
+annotation_qualifies(24, 23).
+annotation_qualifies(26, 25).
+annotation_qualifies(29, 28).
+annotation_qualifies(32, 31).
+annotation_qualifies(34, 33).
+annotation_qualifies(37, 36).
+annotation_qualifies(40, 39).
+annotation_qualifies(42, 41).
+annotation_qualifies(45, 44).
+annotation_qualifies(48, 47).
+annotation_qualifies(50, 49).
+annotation_qualifies(53, 52).
+annotation_qualifies(56, 55).
+annotation_qualifies(58, 57).
+annotation_qualifies(61, 60).
+annotation_qualifies(64, 63).
+annotation_qualifies(66, 65).
+annotation_qualifies(69, 68).
+annotation_qualifies(72, 71).
+annotation_qualifies(74, 73).
+annotation_qualifies(77, 76).
+annotation_qualifies(80, 79).
+annotation_qualifies(82, 81).
+annotation_qualifies(85, 84).
+annotation_qualifies(88, 87).
+annotation_qualifies(90, 89).
+annotation_qualifies(93, 92).
+annotation_qualifies(96, 95).
+annotation_qualifies(98, 97).
+annotation_qualifies(101, 100).
+annotation_qualifies(104, 103).
+annotation_qualifies(106, 105).
+annotation_qualifies(109, 108).
+annotation_qualifies(112, 111).
+annotation_qualifies(114, 113).
+annotation_qualifies(116, 115).
+annotation_qualifies(118, 117).
+annotation_qualifies(120, 119).
+annotation_qualifies(122, 121).
+annotation_qualifies(124, 123).
+annotation_qualifies(127, 126).
+annotation_qualifies(130, 129).

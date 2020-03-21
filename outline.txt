@@ -1,0 +1,92 @@
+# @begin DataCleanup  @desc Workflow for cleaning NYPL Menus DataSet
+# @in title-principal.tsv  @uri file://data/IMDB.cv
+# @in title-rating.tsv  @uri file://data/IMDB.cv
+# @in title-episode.tsv  @uri file://data/IMDB.cv
+# @in Crew.tsv  @uri file://data/IMDB.cv
+# @in title-basic.tsv  @uri file://data/IMDB.cv
+# @in title-akas.tsv  @uri file://data/IMDB.cv
+
+#     @begin Cleantitle-principalusingPython  @desc Use Python to clean title-principal.tsv
+#     @in title-principal.tsv  @uri file://data/IMDB.cv
+#     @param title-principalCleaning\nOperationsSequence
+#     @out Cleantitle-principal.tsv  @uri file://data/clean/Cleantitle-principal.tsv
+#     @end Cleantitle-principalusingPython
+
+#     @begin Cleantitle-ratingusingPython  @desc Use Python to clean title-rating.tsv
+#     @in title-rating.tsv  @uri file://data/IMDB.cv
+#     @param title-ratingCleaning\nOperationsSequence
+#     @out Cleantitle-rating.tsv  @uri file://data/clean/Cleantitle-rating.tsv
+#     @end Cleantitle-ratingusingPython
+
+#     @begin Cleantitle-episodeusingPython  @desc Use Python to clean title-episode.tsv
+#     @in title-episode.tsv  @uri file://data/IMDB.cv
+#     @param title-episodeCleaning\nOperationsSequence
+#     @out Cleantitle-episode.tsv  @uri file://data/clean/Cleantitle-episode.tsv
+#     @end Cleantitle-episodeusingPython
+
+#     @begin CleanCrewusingPython  @desc Use Python to clean Crew.tsv
+#     @in Crew.tsv  @uri file://data/IMDB.cv
+#     @param CrewCleaning\nOperationsSequence
+#     @out CleanCrew.tsv  @uri file://data/clean/CleanCrew.tsv
+#     @end CleanCrewusingPython
+
+#     @begin Cleantitle-basicusingPython  @desc Use Python to clean title-basic.tsv
+#     @in title-basic.tsv  @uri file://data/IMDB.cv
+#     @param title-basicCleaning\nOperationsSequence
+#     @out Cleantitle-basic.tsv  @uri file://data/clean/Cleantitle-basic.tsv
+#     @end Cleantitle-basicusingPython
+
+#     @begin Cleantitle-akasusingPython  @desc Use Python to clean title-akas.tsv
+#     @in title-akas.tsv  @uri file://data/IMDB.cv
+#     @param title-akasCleaning\nOperationsSequence
+#     @out Cleantitle-akas.tsv  @uri file://data/clean/Cleantitle-akas.tsv
+#     @end Cleantitle-akasusingPython
+
+#     @begin DatabaseOperationsOntitle-principal  @desc Use Python to load Cleantitle-principal.tsv\n into table TITLE_PRINCIPAL
+#     @in Cleantitle-principal.tsv  @uri file://data/clean/Cleantitle-principal.tsv
+#     @param title-principalLoadingPythonScript
+#     @out TITLE_PRINCIPAL  @uri http://localhost:8889/notebooks/Cleaning%\n20nProject%20Code.ipynb
+#     @end SQLOperationsOntitle-principal
+
+#     @begin DatabaseOperationsOntitle-rating  @desc Use Python to load Cleantitle-rating.tsv\n into table TITLE_RATING
+#     @in Cleantitle-rating.tsv  @uri file://data/clean/Cleantitle-rating.tsv
+#     @param title-ratingLoadingPythonScript
+#     @out TITLE_RATING  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @end SQLOperationsOntitle-rating
+
+#     @begin DatabaseOperationsOntitle-episode  @desc Use Python to load Cleantitle-episode.tsv\n into table TITLE_EPISODE
+#     @in Cleantitle-episode.tsv  @uri file://data/clean/Cleantitle-episode.tsv
+#     @param title-episodeLoadingPythonScript
+#     @out TITLE_EPISODE  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @end SQLOperationsOntitle-episode
+
+#     @begin DatabaseOperationsOnCrew  @desc Use Python to load CleanCrew.tsv\n into table CREW
+#     @in CleanCrew.tsv  @uri file://data/clean/CleanCrew.tsv
+#     @param CrewLoadingPythonScript
+#     @out CREW  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @end SQLOperationsOnCrew
+
+#     @begin DatabaseOperationsOntitle-basic  @desc Use Python to load Cleantitle-basic.tsv\n into table TITLE_BASIC
+#     @in Cleantitle-basic.tsv  @uri file://data/clean/Cleantitle-basic.tsv
+#     @param title-basicLoadingPythonScript
+#     @out TITLE_BASIC  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @end SQLOperationsOntitle-basic
+
+#     @begin DatabaseOperationsOntitle-akas  @desc Use Python to load Cleantitle-akas.tsv\n into table TITLE_AKAS
+#     @in Cleantitle-akas.tsv  @uri file://data/clean/Cleantitle-akas.tsv
+#     @param title-akasLoadingPythonScript
+#     @out TITLE_AKAS  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @end SQLOperationsOntitle-akas
+
+#     @begin IntegrityConstraintsCheck  @desc Use Python to check integrity\n constraints and functional dependencies
+#     @in TITLE_AKAS  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @in CREW  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @in TITLE_BASIC  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @in TITLE_EPISODE  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @in TITLE_RATING  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @in TITLE_PRINCIPAL  @uri http://localhost:8889/notebooks/Cleaning%\n20//nProject%20Code.ipynb
+#     @param IntegrityConstraintsANDFunctionalDependenciesScript
+#     @out IMDB_FINAL  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+#     @end SQLConstraintsCheck
+# @out IMDB_FINAL  @uri http://localhost:8889/notebooks/Cleaning%\n20Project%20Code.ipynb
+# @end DataCleanup
